@@ -48,7 +48,9 @@
 
           angular.forEach(apiMethods, function(method) {
             ZendeskWidgetApi.prototype[method] = function() {
-              $window.zE[method].apply($window.zE, arguments);
+              $window.zE(function () {
+                $window.zE[method].apply($window.zE, arguments);
+              });
             };
           });
 
